@@ -1,11 +1,14 @@
+import Vue from 'vue';
+import VueMeteorTracker from 'vue-meteor-tracker';
 
-import { Meteor } from 'meteor/meteor';
-import App from './App.svelte';
+Vue.use(VueMeteorTracker);
+
+import App from './App.vue';
+import './main.html';
 
 Meteor.startup(() => {
-
-  new App ({
-    target: document.body
+  new Vue({
+    el: '#app',
+    ...App,
   });
-
 });

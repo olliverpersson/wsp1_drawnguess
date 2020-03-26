@@ -1,3 +1,9 @@
+akryum:npm-check@0.0.4
+akryum:vue@1.0.6
+akryum:vue-component@0.15.2
+akryum:vue-component-dev-client@0.4.7
+akryum:vue-component-dev-server@0.1.4
+akryum:vue-router@0.0.1
 allow-deny@1.1.0
 autoupdate@1.6.0
 babel-compiler@7.5.2
@@ -55,7 +61,6 @@ shell-server@0.4.0
 socket-stream-client@0.2.3
 standard-minifier-css@1.6.0
 standard-minifier-js@2.6.0
-svelte:compiler@3.16.4_1
 tracker@1.2.0
 typescript@3.7.5
 underscore@1.0.10
