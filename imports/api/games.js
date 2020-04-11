@@ -12,16 +12,19 @@ if (Meteor.isServer) {
 	Meteor.publish('games.all',
 		function () {
 
-			return Games.find({});
-
+			let data = Games.find({});		
+			console.log(data);
+			return data
+		
 		});
 	Meteor.publish('games.one',
 		function(id) {
 
-		return Games.findOne({_id: id});
+		let data = Games.find({"_id": id});
+		console.log(data);
+		return data
 
 	});
-
 
 }
 

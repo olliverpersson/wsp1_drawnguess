@@ -6,7 +6,7 @@
 
 		<p>Det här är dina spel:</p>
 
-		<div v-for="game in GetGames">
+		<div v-for="game in allGames">
 
 			<span> {{game.title}} </span>
 
@@ -32,7 +32,7 @@
 
 			},
 
-			GetGames() {
+			allGames() {
 
 				return Games.find({});
 

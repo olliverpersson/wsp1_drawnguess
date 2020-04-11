@@ -27,7 +27,8 @@ RouterFactory.configure(router => {
 		{
 			path: '/game/:id',
 			name: 'game',
-			component: GameView
+			component: GameView,
+			props: true
 		},
 		{
 			path: '/login',
