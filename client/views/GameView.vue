@@ -2,6 +2,10 @@
 
 	<div>
 
+		<button v-on:click="$router.push({name: 'all'})">
+			Gå tillbaka
+		</button>
+
 		<div v-if="game != undefined">
 
 			<h1>Game: {{ game.title }} </h1>
@@ -53,9 +57,13 @@
 
 				return Games.findOne({});
 
+			},
+
+			rounds() {
+
+				return Games.find({});
+
 			}
-
-
 
 		},
 		mounted() {

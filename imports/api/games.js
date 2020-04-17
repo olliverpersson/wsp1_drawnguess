@@ -13,7 +13,6 @@ if (Meteor.isServer) {
 		function () {
 
 			let data = Games.find({});		
-			console.log(data);
 			return data
 		
 		});
@@ -21,7 +20,6 @@ if (Meteor.isServer) {
 		function(id) {
 
 		let data = Games.find({"_id": id});
-		console.log(data);
 		return data
 
 	});
@@ -41,8 +39,6 @@ Meteor.methods({
 			isArchived: false
 
 		}
-
-		console.log(game);
 
 		Games.insert(game);
 

@@ -35,6 +35,11 @@ Meteor.methods({
 
 		Rounds.insert(round);
 
+	},
+	RoundsSetScore(gameId) {
+
+
+
 	}
 
 });

@@ -2,7 +2,11 @@
 
 	<div>
 
-		<router-link to="/create">Skapa nytt spel</router-link>
+		<p>{{ user.username }} - {{ user.emails[0].address }}</p>
+
+		<button v-on:click="logout()">Logga ut</button>
+
+		<button v-on:click="$router.push({name: 'create'})">Skapa nytt spel</button>
 
 		<p>Det här är dina spel:</p>
 
@@ -24,6 +28,15 @@
 
 	export default {
 
+		data () {
+
+			return {
+
+				user: Meteor.user()
+
+			}
+
+		},
 		meteor: {
 
 			$subscribe: {

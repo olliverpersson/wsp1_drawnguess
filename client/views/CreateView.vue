@@ -12,6 +12,10 @@
 
 		<button v-on:click="Create()">Skapa</button>
 
+		<button v-on:click="$router.push({name: 'all'})">
+			Avbryt
+		</button>
+
 	</div>
 
 </template>
