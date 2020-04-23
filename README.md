@@ -9,6 +9,8 @@ Följande tekniker har använts:
 * Meteor - för att skicka data mellan klient och databas, bl.a.
 * VueJS - för att visa data, hantera input etc på klientsidan
 
+och även:
+
 * Git - versionshantering, såklart
 * HTML5 Canvas API - för ritandet
 * NodeJS - Meteor är byggt på nodejs
@@ -17,20 +19,16 @@ Följande tekniker har använts:
 
 1. Installera meteor och git.
 
-  sudo apt-get install git
+  `sudo apt-get install git`
 
-  curl https://install.meteor.com/ | sh
+  `curl https://install.meteor.com/ | sh`
   
 2. Klona detta repository till en mapp
 
 3. Kör kommandot för att starta servern, i projektmappen
 
-  meteor
+  `meteor`
   
 Meteor kommer starta allt som behövs (databas, nodejs etc) 
  
-4. Gå till
-
-  localhost:3000
-  
-och testa appen
+4. Gå till localhost:3000 och testa appen
