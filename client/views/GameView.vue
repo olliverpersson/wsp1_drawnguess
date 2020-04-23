@@ -24,6 +24,13 @@
 
 			</UiCard>
 
+			<UiCard>
+
+				<UiInput v-model="guess" desc="Vet du vad som ritas?" />
+				<UiButton v-on:click="guessWord()">Gissa</UiButton>
+
+			</UiCard>
+
 			<canvas v-if="round.player == user.username"
 					ref="canvas" 
 					id="canvas"
@@ -64,7 +71,8 @@
 				clickingCanvas: false,
 				addPlayerUsername: '',
 				user: Meteor.user(),
-				isCanvasChanged: false
+				isCanvasChanged: false,
+				guess: ''
 
 			}
 
@@ -81,9 +89,6 @@
 			drawDotOnCanvas(e) {
 
 				if(  this.clickingCanvas ) {
-
-					console.log(e.offsetX);
-					console.log(e.offsetY);
 
 					let currX = e.offsetX;
             		let currY = e.offsetY;
@@ -104,6 +109,11 @@
 				Meteor.call('GamesAddPlayer', this.id, this.addPlayerUsername);
 
 				this.addPlayerUsername = "";
+
+			},
+			guessWord() {
+
+				Meteor.call('RoundsGuessWord', this.round._id, this.guess);
 
 			}
 
