@@ -22,7 +22,7 @@
 
         <button v-on:click="createUser()"> Skapa konto </button>
 
-        <router-link to="login">Har du redan ett konto? Logga in</router-link>
+        <router-link to="/">Har du redan ett konto? Logga in</router-link>
 
     </div>
 

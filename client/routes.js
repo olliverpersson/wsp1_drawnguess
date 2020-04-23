@@ -42,6 +42,7 @@ RouterFactory.configure(router => {
 			path: '/games',
 			name: 'all',
 			component: AllView,
+			beforeEnter: checkAuth
     	},
 		{
 			path: '/game/:id',
@@ -64,8 +65,7 @@ RouterFactory.configure(router => {
 		{
 			path: '/register',
 			name: 'register',
-			component: RegisterView,
-			beforeEnter: checkAuth
+			component: RegisterView
 		}
 
   	])

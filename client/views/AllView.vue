@@ -4,18 +4,22 @@
 
 		<p>{{ user.username }} - {{ user.emails[0].address }}</p>
 
-		<button v-on:click="logout()">Logga ut</button>
+		<UiButton v-on:click="logout()">Logga ut</UiButton>
 
-		<button v-on:click="$router.push({name: 'create'})">Skapa nytt spel</button>
+		<UiButton v-on:click="$router.push({name: 'create'})">Skapa nytt spel</UiButton>
 
-		<p>Det här är dina spel:</p>
+		<div class="grid">
 
-		<div v-for="game in allGames">
+			<UiCard v-for="game in allGames"
+					v-on:click="$router.push({ name: 'game', params: { id: game._id } })"
+					v-bind:key="game.id">
 
-			<span> {{game.title}} </span>
+				<h3 style="margin-top: 0px; color: white"> {{game.title}} </h3>
+				
+				<span v-if="game.isArchived">Avslutat</span>
 
-			<router-link v-bind:to=" '/game/' + game._id ">Visa spel</router-link>
-
+			</UiCard>
+		
 		</div>
 
 	</div>
@@ -23,6 +27,9 @@
 </template>
 
 <script>
+
+	import UiButton from '../ui/UiButton';
+	import UiCard from '../ui/UiCard';
 
 	import { Games } from '/imports/api/games';
 
@@ -35,6 +42,12 @@
 				user: Meteor.user()
 
 			}
+
+		},
+		components: {
+
+			UiCard,
+			UiButton
 
 		},
 		meteor: {
@@ -51,8 +64,48 @@
 
 			}
 
+		},
+		methods: {
+
+			logout() {
+
+				Meteor.logout( (error) => {
+
+					if(error) {
+
+						alert("Utloggningen misslyckades.");
+						console.log(error);
+
+					} else {
+
+						this.$router.push( { name: "login" } );
+
+					}
+
+				});
+
+			}
+
 		}
 
 	}
 
 </script>
+
+<style scoped>
+
+	div.grid {
+
+		display: flex;
+		flex-wrap: wrap;
+
+	}
+
+	div.grid * {
+
+		width: 250px;
+		cursor: pointer;
+
+	}
+
+</style>

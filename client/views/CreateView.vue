@@ -46,7 +46,7 @@
 
 				Meteor.call('GamesCreate', this.game);
 
-				this.$router.push('/');
+				this.$router.push({ name: 'all' });
 
 			}
 

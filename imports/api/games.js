@@ -12,8 +12,7 @@ if (Meteor.isServer) {
 	Meteor.publish('games.all',
 		function () {
 
-			let data = Games.find({});		
-			return data
+			return Games.find({ players: { $elemMatch: {username: Meteor.user().username} } });	
 		
 		});
 	Meteor.publish('games.one',
@@ -30,17 +29,62 @@ Meteor.methods({
 
 	GamesCreate(gameData) {
 
-		//TODO: clean data from client
+		if( Meteor.user() ) {
+			
+			//TODO: clean data from client
 
-		let game = {
+			let game = {
 
-			...gameData,
-			createdAt: new Date(),
-			isArchived: false
+				...gameData,
+				players: [ { username: Meteor.user().username, score: 0 } ],
+				owner: Meteor.user().username,
+				createdAt: new Date(),
+				isArchived: false
+
+			}
+
+			Games.insert(game, (error, id) => {
+
+				if (!error) {
+
+					Meteor.call('RoundsCreate', id);
+
+				}
+
+			});
 
 		}
 
-		Games.insert(game);
+	},
+	GamesAddPlayer(gameid, username) {
+
+		if( Meteor.user() ) {
+
+			let game = Games.findOne( { _id: gameid } );
+			let exists = false;
+
+			for ( let player in game.players ) {
+
+				if( player.username == username ) {
+
+					exists = true;
+
+				}
+
+			};
+
+			if( !exists ) {
+
+				game.players.push({username: username, score: 0})
+
+				Games.update( 
+					{ _id: gameid  }, 
+					{ $set: { players: game.players } }
+				);
+
+			}
+
+		}
 
 	}
 

@@ -1,18 +1,26 @@
 <template>
 
-	<div>
+	<div class="base">
 
-		<h1>Logga in</h1>
+		<div>
 
-		<p> {{ error }} </p>
+			<h1>The draw-something game</h1>
 
-		<input type="text" v-model="user">
+			<UiCard>
 
-		<input type="password" v-model="pass">
+				<p> {{ error }} </p>
 
-		<button v-on:click="logIn()">Logga in</button>
+				<UiInput desc="Användarnamn" v-model="user"></UiInput>
 
-		<router-link to="register">Har du inte ett konto? Registrera dig här</router-link>
+				<UiInput desc="Lösenord" type="password" v-model="pass"></UiInput>
+
+				<UiButton v-on:click="logIn()">Logga in</UiButton>
+
+				<router-link to="register">Har du inte ett konto? Registrera dig här</router-link>
+
+			</UiCard>
+
+		</div>
 
 	</div>
 
@@ -21,8 +29,19 @@
 <script>
 	import { Accounts } from 'meteor/accounts-base'
 
-	export default {
+	import UiButton from '../ui/UiButton';
+	import UiCard from '../ui/UiCard';
+	import UiInput from '../ui/UiInput';
 
+	export default {
+	
+		components: {
+
+			UiButton,
+			UiCard,
+			UiInput
+
+		},
 		data() {
 
 			return {
@@ -59,3 +78,28 @@
 	}
 
 </script>
+
+<style scoped>
+
+	.base {
+
+		background: url(../resources/blue-abstract.jpg) no-repeat center center fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		height: 100vh;
+		width: 100vw
+
+	}
+
+	.base div {
+
+		display: flex;
+
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+</style>
