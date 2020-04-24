@@ -15,6 +15,28 @@ och även:
 * HTML5 Canvas API - för ritandet
 * NodeJS - Meteor är byggt på nodejs
 
+## Kravspecifikation:
+
+Måste:
+-[x] En yta att rita på
+-[x] Ritytan synkas med andra spelare
+-[x] Möjlighet att gå med i spel
+-[x] Skapa ett nytt spel
+-[x] Möjlighet att gissa ord
+-[x] Få poäng om det gissade ordet var rätt
+
+Bör:
+-[x] Logga in och skapa nya användare
+-[] Enkelt att använda med snygg design
+-[] Enkelt och intuitivt sätt att rita på
+
+Bra:
+-[] Skicka länk till någon som inte har appen för att spela
+-[] Visa det som ritas på en stor skärm, typ Kahoot
+-[] Avregistrera användare
+-[] Skicka bekräftelsemail
+-[] Visa felmeddelanden för klienten
+
 ## Installera och kör på din maskin
 
 1. Installera meteor och git.
