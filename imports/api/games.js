@@ -5,6 +5,8 @@ import {
 	Mongo
 } from 'meteor/mongo'
 
+import { Words } from '/imports/api/words';
+
 export const Games = new Mongo.Collection('games');
 
 if (Meteor.isServer) {
@@ -120,12 +122,10 @@ Meteor.methods({
 				{ lang: 'sv', isAccepted: true, random: { $gt: Math.random() } } );
 
 			// In the current game, increase score of player by one
-			Games.update( round.gameId, 
+			Games.update( gameId, 
 				{ $inc: { "players.$[playerQuery].score": 1 }, 
 			      $set: { word: newWord, canvas: "", currPlayer: game.players[ Math.floor(Math.random() * game.players.length) ].username } },
-				{ arrayFilters: [ { playerQuery: { username: round.player } } ] } );
-
-			Meteor.call('RoundsCreate', gameId);
+				{ arrayFilters: [ { playerQuery: { username: Meteor.user().username } } ] } );
 
 		}
 
