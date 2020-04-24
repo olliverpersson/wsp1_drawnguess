@@ -1,2 +1,4 @@
 node_modules/
-wsp1_kortspel
+*.code-workspace
+.cache
+.meteor/local
