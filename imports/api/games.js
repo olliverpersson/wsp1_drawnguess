@@ -9,19 +9,38 @@ export const Games = new Mongo.Collection('games');
 
 if (Meteor.isServer) {
 
-	Meteor.publish('games.all',
-		function () {
+	Meteor.publish('games.all', function () {
 
-			return Games.find({ players: { $elemMatch: {username: Meteor.user().username} } });	
+		return Games.find({
+			players: { $elemMatch: {username: Meteor.user().username } } }, 
+			{ fields: { title: 1,  } });	
 		
 		});
-	Meteor.publish('games.one',
-		function(id) {
 
-		let data = Games.find({"_id": id});
-		return data
+	Meteor.publish('games.one', function(gameId) {
+
+		return Games.find(
+			{"_id": gameId},
+			{ fields: { canvas: 0 } });
 
 	});
+
+	Meteor.publish('games.canvas', function(gameId) {
+
+		return Games.find(
+			{"_id": gameId},
+			{ fields: { canvas: 1 } });
+
+	});
+
+	/*Meteor.publish('games.word', function(gameId){
+
+		let data = Games.find(
+			{"_id": gameId},
+			{ fields: { word: 1, player: 1 } } );
+		return data
+
+	});*/
 
 }
 
@@ -31,27 +50,26 @@ Meteor.methods({
 
 		if( Meteor.user() ) {
 			
-			//TODO: clean data from client
+			// Hämta ett nytt, random ord
+			let word = Words.findOne( 
+				{ lang: 'sv', isAccepted: true, random: { $gt: Math.random() } } );
 
+			// Skapar speldokumentet
 			let game = {
 
-				...gameData,
+				title: gameData.title,
 				players: [ { username: Meteor.user().username, score: 0 } ],
 				owner: Meteor.user().username,
 				createdAt: new Date(),
-				isArchived: false
+				isArchived: false,
+				canvas: "",
+				currPlayer: Meteor.user().username,
+				word: word.word
 
 			}
 
-			Games.insert(game, (error, id) => {
-
-				if (!error) {
-
-					Meteor.call('RoundsCreate', id);
-
-				}
-
-			});
+			// Lägger till dokumentet i databasen
+			Games.insert(game);
 
 		}
 
@@ -83,6 +101,31 @@ Meteor.methods({
 				);
 
 			}
+
+		}
+
+	},
+	GamesSetDrawing(gameId, canvasData) {
+
+		Games.update( gameId, { $set: { canvas: canvasData } } );
+
+	},
+	GamesGuessWord(gameId, guess) {
+
+		let game = Games.findOne( { "_id": gameId }, { fields: { word: 1, players: 1 } } );
+
+		if( guess == game.word ) {
+
+			let newWord = Words.findOne( 
+				{ lang: 'sv', isAccepted: true, random: { $gt: Math.random() } } );
+
+			// In the current game, increase score of player by one
+			Games.update( round.gameId, 
+				{ $inc: { "players.$[playerQuery].score": 1 }, 
+			      $set: { word: newWord, canvas: "", currPlayer: game.players[ Math.floor(Math.random() * game.players.length) ].username } },
+				{ arrayFilters: [ { playerQuery: { username: round.player } } ] } );
+
+			Meteor.call('RoundsCreate', gameId);
 
 		}
 
