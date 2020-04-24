@@ -19,7 +19,7 @@
 
 			</UiCard>
 
-			<UiCard v-if="game.owner == user._id">
+			<UiCard v-if="game.owner == user.username">
 
 				<UiInput v-model="addPlayerUsername" desc="Användarnamn på ny spelare"></UiInput>
 				<UiButton v-on:click="addPlayer()">Lägg till spelare</UiButton>
@@ -33,13 +33,25 @@
 
 			</UiCard>
 
-			<canvas v-if="game.player == user.username"
+			<UiCard v-if="game.currPlayer == user.username">
+
+				<p>Ditt ord är: {{ game.word }}</p>
+				<p>Rita här:</p>
+
+				<canvas
+					style="border: 1px solid var(--color-5)"
 					ref="canvas" 
 					v-on:mousedown="clickingCanvas = true" 
 					v-on:mouseup="clickingCanvas = false" 
 					v-on:mousemove="drawDotOnCanvas"></canvas>
 
-			<img v-if="game.currPlayer != user.username" v-bind:src="game.canvas">
+			</UiCard>
+
+			<UiCard v-if="game.currPlayer != user.username">
+
+				<img v-bind:src="game.canvas">
+
+			</UiCard>
 
 		</div>
 		
@@ -138,7 +150,7 @@
 				if( this.isCanvasChanged ) { 
 
 					Meteor.call(
-						'GamessSetDrawing', 
+						'GamesSetDrawing', 
 						this.game._id, 
 						this.$refs['canvas'].toDataURL() );
 
