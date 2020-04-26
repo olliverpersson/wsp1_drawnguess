@@ -15,7 +15,10 @@
 				<p>Spelare:</p>
 				<p v-for="player in game.players" v-bind:key="player.username">
 					{{ player.username }} - {{ player.score }} poäng
+					<span v-if="game.owner == player.username"> - Admin</span>
 				</p>
+
+				<p>Endast Admin kan lägga till nya spelare</p>
 
 			</UiCard>
 
