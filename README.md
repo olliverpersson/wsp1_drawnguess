@@ -5,6 +5,7 @@ Det här projektet var från början tänkt att vara en digital spelplan för n�
 ## Tech Stack
 
 Följande tekniker har använts:
+
 * MongoDB - som databas, lagring av data
 * Meteor - för att skicka data mellan klient och databas, bl.a.
 * VueJS - för att visa data, hantera input etc på klientsidan
@@ -27,15 +28,22 @@ Måste:
 
 Bör:
 -[x] Logga in och skapa nya användare
--[] Enkelt att använda med snygg design
--[] Enkelt och intuitivt sätt att rita på
+-[x] Enkelt att använda med okej design
+-[x] Enkelt och intuitivt sätt att rita på
 
 Bra:
 -[] Skicka länk till någon som inte har appen för att spela
 -[] Visa det som ritas på en stor skärm, typ Kahoot
 -[] Avregistrera användare
--[] Skicka bekräftelsemail
+-[] Skicka verifieringsmail för konto
 -[] Visa felmeddelanden för klienten
+
+### Kända problem & buggar
+
+* Ritytan( Canvas-elementet ) ändrar inte storlek när fönstret gör det
+* Touch fungerar dåligt med ritytan
+* Ritytan kan ibland visas utanför fönstret
+* Det går att lägga till spelare som inte finns
 
 ## Installera och kör på din maskin
 
