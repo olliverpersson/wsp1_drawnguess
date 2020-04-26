@@ -10,7 +10,7 @@
 
 			<UiCard>
 
-				<h1> {{ game.title }} </h1>
+				<h1 style="margin: 0px"> {{ game.title }} </h1>
 
 				<p>Spelare:</p>
 				<p v-for="player in game.players" v-bind:key="player.username">
@@ -35,7 +35,7 @@
 
 			<UiCard v-if="game.currPlayer == user.username">
 
-				<p>Ditt ord är: {{ game.word }}</p>
+				<p>Ditt ord är: <span style="font-size: 20px;">{{ game.word }}</span></p>
 				<p>Rita här:</p>
 
 				<canvas
@@ -84,7 +84,9 @@
 				addPlayerUsername: '',
 				user: Meteor.user(),
 				isCanvasChanged: false,
-				guess: ''
+				guess: '',
+				lastX: 0,
+				lastY: 0
 
 			}
 
@@ -108,7 +110,7 @@
 					let ctx = this.$refs['canvas'].getContext('2d');
 
 					ctx.arc(currX, currY, 2, 0, 2);
-					ctx.strokeStyle = 'white';
+					ctx.strokeStyle = 'black';
 					ctx.stroke();
 
 					this.isCanvasChanged = true;
@@ -160,6 +162,12 @@
 
 			}, 250);
 
+			/*this.refs['canvas'].addEventListener('mousedown', () => {
+
+
+
+			}); */
+
 		}
 
 	}
@@ -170,8 +178,8 @@
 
 	canvas {
 
-		width: 800px;
-		height: 400px;
+		width: 100%;
+		height: 500px;
 		background: transparent;
 
 	}

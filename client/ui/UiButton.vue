@@ -8,8 +8,8 @@
 
     button {
 
-        background: var(--color-5);
-        color: var(--color-1);
+        background: var(--color-2);
+        color: var(--on-color-2);
         border: none;
         padding: 8px 30px;
         border-radius: 20px;
@@ -22,8 +22,7 @@
 
     button:hover {
 
-        background: var(--color-1);
-        color: var(--color-5);
+        box-shadow: 0px 0px 8px var(--color-2);
 
     }
 

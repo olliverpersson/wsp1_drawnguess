@@ -18,12 +18,13 @@
 
 <style>
 
-	@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Roboto:wght@600&display=swap');
+	@import url('https://fonts.googleapis.com/css2?family=Corben&family=Roboto&display=swap');
+
 
 	.base {
 
-		--font-header: 'Overpass';
-		--font-body: 'Arvo';
+		--font-header: 'Corben', sans-serif;
+		--font-body: 'Roboto', sans-serif;
 
 
 		/*--color-1: #F23054;
@@ -37,17 +38,16 @@
 		--on-color-4: ;*/
 
 
-		--color-1: #4ACAD9;
-		--color-2: #91F2F2;
-		--color-3: #DCF0F2;
-		--color-4: #177DA6;
-		--color-5: #2AA4BF;
-		--on-color-1: ;
-		--on-color-2: ;
-		--on-color-3: ;
-		--on-color-4: ;
+		--color-1: #93EDD4; /* primary */
+		--color-2: #3CBAC8; /* secondary */
+		--color-3: rgb(41, 41, 41); /* third */
+		--color-4: rgb(255, 255, 255); /* background */
+		--on-color-1: white;
+		--on-color-2: white;
+		--on-color-3: #3CBAC8;
+		--on-color-4: #3CBAC8;
 
-		background-color: var(--color-3);
+		background-color: var(--color-4);
 		height: 100vh;
 		width: 100vw;
 		display: block;
@@ -57,17 +57,17 @@
 
 	h1, h2, h3, h4, h5, h6 {
 
-			color: white;
-			font-family: 'Bungee Inline', sans-serif;
+			color: var(--color-3);
+			font-family: var(--font-header);
 
 		}
 
-		p, span {
+	p, span {
 
-			font-family: 'Roboto', sans-serif;
-			font-size: 12px;
-			color: white;
+		font-family: 'Roboto', sans-serif;
+		font-size: 12px;
+		color: var(--color-3);
 
-		}
+	}
 
 </style>

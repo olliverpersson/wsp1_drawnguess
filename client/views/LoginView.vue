@@ -4,7 +4,7 @@
 
 		<div>
 
-			<h1>The draw-something game</h1>
+			<h1>Draw'n'Guess</h1>
 
 			<UiCard>
 
@@ -14,7 +14,11 @@
 
 				<UiInput desc="Lösenord" type="password" v-model="pass"></UiInput>
 
+				<br>
+
 				<UiButton v-on:click="logIn()">Logga in</UiButton>
+
+				<br>
 
 				<router-link to="register">Har du inte ett konto? Registrera dig här</router-link>
 
@@ -83,13 +87,14 @@
 
 	.base {
 
-		background: url(../resources/blue-abstract.jpg) no-repeat center center fixed;
+		/*background: url(../resources/blue-abstract.jpg) no-repeat center center fixed;*/
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 		height: 100vh;
-		width: 100vw
+		width: 100vw;
+		background: var(--color-4);
 
 	}
 

@@ -14,7 +14,9 @@
 					v-on:click="$router.push({ name: 'game', params: { id: game._id } })"
 					v-bind:key="game.id">
 
-				<h3 style="margin-top: 0px; color: white"> {{game.title}} </h3>
+				<h3 style="margin: 0px"> {{game.title}} </h3>
+
+				<p> {{ game.players.length }} spelare </p>
 				
 				<span v-if="game.isArchived">Avslutat</span>
 

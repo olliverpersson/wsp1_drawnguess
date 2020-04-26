@@ -15,7 +15,7 @@ if (Meteor.isServer) {
 
 		return Games.find({
 			players: { $elemMatch: {username: Meteor.user().username } } }, 
-			{ fields: { title: 1,  } });	
+			{ fields: { title: 1, players: 1  } });	
 		
 		});
 
