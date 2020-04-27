@@ -94,7 +94,7 @@
 		flex-direction: column;
 		height: 100vh;
 		width: 100vw;
-		background: var(--color-4);
+		background: var(--color-1);
 
 	}
 

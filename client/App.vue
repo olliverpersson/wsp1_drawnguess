@@ -1,6 +1,6 @@
 <template>
 
-	<div class="base">
+	<div class="appcomponent">
 
 		<router-view></router-view>
 
@@ -21,7 +21,7 @@
 	@import url('https://fonts.googleapis.com/css2?family=Corben&family=Roboto&display=swap');
 
 
-	.base {
+	.appcomponent {
 
 		--font-header: 'Corben', sans-serif;
 		--font-body: 'Roboto', sans-serif;

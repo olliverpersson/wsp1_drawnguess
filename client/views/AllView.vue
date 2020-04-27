@@ -1,12 +1,20 @@
 <template>
 
-	<div>
+	<div class="base">
 
-		<p>{{ user.username }} - {{ user.emails[0].address }}</p>
+		<header>
 
-		<UiButton v-on:click="logout()">Logga ut</UiButton>
+			<UiCard>
 
-		<UiButton v-on:click="$router.push({name: 'create'})">Skapa nytt spel</UiButton>
+				<h2 style="margin-bottom: 0px;">{{ user.username }}</h2>
+				<p style="margin-top: 0px;"> {{ user.emails[0].address }} </p>
+
+				<UiButton v-on:click="$router.push({name: 'create'})">Skapa nytt spel</UiButton>
+				<UiButton style="margin-bottom: 5px" v-on:click="logout()">Logga ut</UiButton>
+
+			</UiCard>
+
+		</header>
 
 		<div class="grid">
 
@@ -100,6 +108,7 @@
 
 		display: flex;
 		flex-wrap: wrap;
+		padding-top: 40px;
 
 	}
 
@@ -107,6 +116,31 @@
 
 		width: 250px;
 		cursor: pointer;
+
+	}
+
+	header {
+
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		background: var(--color-1);
+		text-align: center;
+		padding-top: 15px; 
+
+	}
+
+	header div {
+
+		position: relative;
+		top: 40px;
+
+	}
+
+	.base {
+
+		height: 100%;
+		background: rgb(250,250,250);
 
 	}
 
