@@ -2,13 +2,11 @@
 
 	<div>
 
-		<UiButton v-on:click="$router.push({name: 'all'})">
-			Gå tillbaka
-		</UiButton>
-
 		<div v-if="game != undefined">
 
 			<UiCard>
+
+				<UiButton v-on:click="$router.push({name: 'all'})"> Gå tillbaka </UiButton>
 
 				<h1 style="margin: 0px"> {{ game.title }} </h1>
 
@@ -24,6 +22,8 @@
 
 			<UiCard v-if="game.owner == user.username">
 
+				<h3>Lägg till en ny spelare i spelet</h3>
+
 				<UiInput v-model="addPlayerUsername" desc="Användarnamn på ny spelare"></UiInput>
 				<UiButton v-on:click="addPlayer()">Lägg till spelare</UiButton>
 
@@ -31,12 +31,16 @@
 
 			<UiCard v-if="game.currPlayer != user.username">
 
+				<h3>Det är din tur att gissa vad som ritas</h3>
+
 				<UiInput v-model="guess" desc="Vet du vad som ritas?" />
 				<UiButton v-on:click="guessWord()">Gissa</UiButton>
 
 			</UiCard>
 
 			<UiCard v-if="game.currPlayer == user.username">
+
+				<h3>Det är din tur att rita</h3>
 
 				<p>Ditt ord är: <span style="font-size: 20px;">{{ game.word }}</span></p>
 				
@@ -183,6 +187,8 @@
         			ctx.lineTo(x, y);
         			ctx.closePath();
 					ctx.stroke();
+
+					this.isCanvasChanged = true;
 				
 				}
 

@@ -122,10 +122,15 @@ Meteor.methods({
 				{ lang: 'sv', isAccepted: true, random: { $gt: Math.random() } } );
 
 			// In the current game, increase score of player by one
-			Games.update( gameId, 
+			Games.rawCollection().update( 
+				{ "_id": gameId }, 
 				{ $inc: { "players.$[playerQuery].score": 1 }, 
-			      $set: { word: newWord, canvas: "", currPlayer: game.players[ Math.floor(Math.random() * game.players.length) ].username } },
-				{ arrayFilters: [ { playerQuery: { username: Meteor.user().username } } ] } );
+			      $set: { word: newWord.word, canvas: "", currPlayer: game.players[ Math.floor(Math.random() * game.players.length) ].username } },
+				{ arrayFilters: [ { 'playerQuery.username': Meteor.user().username } ] }, (error) => {
+
+					console.log("error", error);
+
+				} );
 
 		}
 
