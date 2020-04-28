@@ -32,11 +32,12 @@ Bör:
 -[x] Enkelt och intuitivt sätt att rita på
 
 Bra:
--[] Skicka länk till någon som inte har appen för att spela
+-[] Skicka länk till någon som inte har ett konto för att spela
 -[] Visa det som ritas på en stor skärm, typ Kahoot
 -[] Avregistrera användare
--[] Skicka verifieringsmail för konto
--[] Visa felmeddelanden för klienten
+-[] Skicka verifieringsmail vid registrering av konto
+-[] Visa felmeddelanden
+-[] Hämta ord att rita från en ordboks-api
 
 ### Kända problem & buggar
 
