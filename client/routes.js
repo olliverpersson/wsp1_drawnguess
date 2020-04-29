@@ -19,6 +19,7 @@ import GameView from './views/GameView.vue'
 import LoginView from './views/LoginView.vue'
 import CreateView from './views/CreateView.vue'
 import RegisterView from './views/RegisterView.vue'
+import SubmitWordView from './views/SubmitWordView.vue'
 
 function checkAuth (to, from, next) {
 
@@ -66,6 +67,11 @@ RouterFactory.configure(router => {
 			path: '/register',
 			name: 'register',
 			component: RegisterView
+		},
+		{
+			path:'/words/submit',
+			name: 'submitWord',
+			component: SubmitWordView
 		}
 
   	])

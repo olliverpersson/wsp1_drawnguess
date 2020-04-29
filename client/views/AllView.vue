@@ -10,6 +10,7 @@
 				<p style="margin-top: 0px;"> {{ user.emails[0].address }} </p>
 
 				<UiButton v-on:click="$router.push({name: 'create'})">Skapa nytt spel</UiButton>
+				<UiButton v-on:click="$router.push({name: 'submitWord'})">Skicka in ord</UiButton>
 				<UiButton style="margin-bottom: 5px" v-on:click="logout()">Logga ut</UiButton>
 
 			</UiCard>

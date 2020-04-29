@@ -58,7 +58,7 @@
 
 				</select>
 
-				Storlek <select v-model="brushWidth">
+				Storlek: <select v-model="brushWidth">
 
 					<option>1</option>
 					<option>2</option>
