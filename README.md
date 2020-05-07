@@ -19,25 +19,25 @@ och även:
 ## Kravspecifikation:
 
 Måste:
--[x] En yta att rita på
--[x] Ritytan synkas med andra spelare
--[x] Möjlighet att gå med i spel
--[x] Skapa ett nytt spel
--[x] Möjlighet att gissa ord
--[x] Få poäng om det gissade ordet var rätt
+- [x] En yta att rita på
+- [x] Ritytan synkas med andra spelare
+- [x] Möjlighet att gå med i spel
+- [x] Skapa ett nytt spel
+- [x] Möjlighet att gissa ord
+- [x] Få poäng om det gissade ordet var rätt
 
 Bör:
--[x] Logga in och skapa nya användare
--[x] Enkelt att använda med okej design
--[x] Enkelt och intuitivt sätt att rita på
+- [x] Logga in och skapa nya användare
+- [x] Enkelt att använda med okej design
+- [x] Enkelt och intuitivt sätt att rita på
 
 Bra:
--[] Skicka länk till någon som inte har ett konto för att spela
--[] Visa det som ritas på en stor skärm, typ Kahoot
--[] Avregistrera användare
--[] Skicka verifieringsmail vid registrering av konto
--[] Visa felmeddelanden
--[] Hämta ord att rita från en ordboks-api
+- [] Skicka länk till någon som inte har ett konto för att spela
+- [] Visa det som ritas på en stor skärm, typ Kahoot
+- [] Avregistrera användare
+- [] Skicka verifieringsmail vid registrering av konto
+- [] Visa felmeddelanden
+- [] Hämta ord att rita från en ordboks-api
 
 ### Kända problem & buggar
 
